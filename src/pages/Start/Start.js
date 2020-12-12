@@ -2,30 +2,47 @@ import React, { Component } from "react";
 import { withAuth } from "../../context/auth-context";
 import bookService from "../../lib/book-service";
 import Navbar from "../../components/Navbar";
+import "./Start.css";
 
-class Private extends Component {
+class Start extends Component {
   state = {
-    books: [],
+    actionBooks: [],
+    fantasyBooks: [],
   };
 
   componentDidMount() {
     bookService.getAllBooks().then((books) => {
-      this.setState({ books: books[0].books });
+      const actionBooks = books[0].books.filter(
+        (book) => book.genre === "action"
+      );
+
+      const fantasyBooks = books[0].books.filter(
+        (book) => book.genre === "fantasy"
+      );
+
+      this.setState({ actionBooks, fantasyBooks });
     });
   }
 
   render() {
-    const { books } = this.state;
+    const { actionBooks, fantasyBooks } = this.state;
     return (
       <div>
         <Navbar />
         <h2>Welcome {this.props.user && this.props.user.username}</h2>
-        {books.map((book, i) => {
-          return <h1 key={i}>{book.title}</h1>;
-        })}
+        <div className="action-books">
+          {actionBooks.map((book, i) => {
+            return <h1 key={i}>{book.title}</h1>;
+          })}
+        </div>
+        <div className="fantasy-books">
+          {fantasyBooks.map((book, i) => {
+            return <h1 key={i}>{book.title}</h1>;
+          })}
+        </div>
       </div>
     );
   }
 }
 
-export default withAuth(Private);
+export default withAuth(Start);

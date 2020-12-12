@@ -7,25 +7,15 @@ class Navbar extends Component {
     // const { user, logout, isLoggedin } = this.props;
     return (
       <nav className="navbar">
-        <Link to={"/"} id="home-btn">
-          <h4>Home</h4>
+        <Link to={"/dashboard"} id="dashboard-btn">
+          <h4>Dashboard</h4>
         </Link>
-        {this.props.isLoggedIn ? (
-          <>
-            <p>email: {this.props.user && this.props.user.email}</p>
-            <button onClick={this.props.logout}>Logout</button>
-          </>
-        ) : (
-          <>
-            <Link to="/login">
-              <button className="navbar-button">Login</button>{" "}
-            </Link>
-            <br />
-            <Link to="/signup">
-              <button className="navbar-button">Sign Up</button>{" "}
-            </Link>
-          </>
-        )}
+        <Link to={"/profile"} id="profile-btn">
+          <h4>Profile</h4>
+        </Link>
+        <Link to={"/start"} id="start-btn">
+          <h4>Start</h4>
+        </Link>
       </nav>
     );
   }

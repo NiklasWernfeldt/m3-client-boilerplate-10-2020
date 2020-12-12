@@ -16,6 +16,9 @@ class Navbar extends Component {
         <Link to={"/start"} id="start-btn">
           <h4>Start</h4>
         </Link>
+        <Link to={"/createBook"} id="plus-btn">
+          <h4>+</h4>
+        </Link>
       </nav>
     );
   }

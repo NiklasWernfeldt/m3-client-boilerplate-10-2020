@@ -18,6 +18,22 @@ class BookService {
     const pr = this.book.get(`/book/${id}`).then((response) => response.data);
     return pr;
   };
+
+  addToFavorite = (id) => {
+    const pr = this.book
+      .post(`/books/favorites/${id}`)
+      .then((response) => response.data);
+
+    return pr;
+  };
+
+  addToReadList = (id) => {
+    const pr = this.book
+      .post(`/books/postpone/${id}`)
+      .then((response) => response.data);
+
+    return pr;
+  };
 }
 
 const bookService = new BookService();

@@ -15,7 +15,6 @@ class BookService {
   };
 
   getOneBook = (id) => {
-    console.log("GOB", id);
     const pr = this.book.get(`/book/${id}`).then((response) => response.data);
     return pr;
   };

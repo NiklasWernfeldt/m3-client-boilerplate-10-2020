@@ -13,6 +13,12 @@ class BookService {
 
     return pr;
   };
+
+  getOneBook = (id) => {
+    console.log("GOB", id);
+    const pr = this.book.get(`/book/${id}`).then((response) => response.data);
+    return pr;
+  };
 }
 
 const bookService = new BookService();

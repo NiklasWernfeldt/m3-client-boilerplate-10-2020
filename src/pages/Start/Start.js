@@ -3,6 +3,7 @@ import { withAuth } from "../../context/auth-context";
 import bookService from "../../lib/book-service";
 import Navbar from "../../components/Navbar";
 import "./Start.css";
+import { Link } from "react-router-dom";
 
 class Start extends Component {
   state = {
@@ -32,12 +33,20 @@ class Start extends Component {
         <h2>Welcome {this.props.user && this.props.user.username}</h2>
         <div className="action-books">
           {actionBooks.map((book, i) => {
-            return <h1 key={i}>{book.title}</h1>;
+            return (
+              <Link key={i} to={`/bookdetails/${book._id}`}>
+                <h1>{book.title}</h1>;
+              </Link>
+            );
           })}
         </div>
         <div className="fantasy-books">
           {fantasyBooks.map((book, i) => {
-            return <h1 key={i}>{book.title}</h1>;
+            return (
+              <Link key={i} to={`/bookdetails/${book._id}`}>
+                <h1>{book.title}</h1>;
+              </Link>
+            );
           })}
         </div>
       </div>

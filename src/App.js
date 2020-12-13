@@ -10,6 +10,7 @@ import Dashboard from "./pages/Dashboard/Dashboad";
 import Profile from "./pages/Profile/Profile";
 import CreateBook from "./pages/CreateBook/CreateBook";
 import MyBook from "./pages/MyBook/MyBook";
+import BookDetails from "./pages/BookDetails/BookDetails";
 
 import AnonRoute from "./components/AnonRoute";
 import PrivateRoute from "./components/PrivateRoute";
@@ -29,6 +30,7 @@ class App extends Component {
           <PrivateRoute exact path="/profile" component={Profile} />
           <PrivateRoute exact path="/createBook" component={CreateBook} />
           <PrivateRoute exact path="/mybook" component={MyBook} />
+          <PrivateRoute exact path="/bookdetails/:id" component={BookDetails} />
         </Switch>
       </div>
     );

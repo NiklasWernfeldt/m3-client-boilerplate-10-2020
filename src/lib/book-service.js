@@ -39,6 +39,11 @@ class BookService {
     const pr = this.book.post("/book/create", data);
     return pr;
   };
+
+  getMyBooks = () => {
+    const pr = this.book.get("/dashboard/").then((response) => response.data);
+    return pr;
+  };
 }
 
 const bookService = new BookService();

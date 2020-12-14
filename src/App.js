@@ -31,7 +31,7 @@ class App extends Component {
           <PrivateRoute exact path="/dashboard" component={Dashboard} />
           <PrivateRoute exact path="/profile" component={Profile} />
           <PrivateRoute exact path="/createBook" component={CreateBook} />
-          <PrivateRoute exact path="/mybook" component={MyBook} />
+          <PrivateRoute exact path="/mybook/:id" component={MyBook} />
           <PrivateRoute exact path="/bookdetails/:id" component={BookDetails} />
           <PrivateRoute exact path="/author/:id" component={Author} />
           <PrivateRoute exact path="/read/:id" component={Read} />

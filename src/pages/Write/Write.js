@@ -1,17 +1,18 @@
 import React, { Component } from "react";
-import bookService from "../../lib/book-service";
 import Navbar from "../../components/Navbar";
-
-export default class Read extends Component {
+import bookService from "../../lib/book-service";
+class Write extends Component {
   state = {
     book: "",
     pageNr: 1,
+    editMode: false,
+    pages: [],
   };
 
   componentDidMount() {
     const { id } = this.props.match.params;
     bookService.getOneBook(id).then((book) => {
-      this.setState(book);
+      this.setState({ book, pages: book.book.pages });
     });
   }
 
@@ -24,16 +25,15 @@ export default class Read extends Component {
   };
 
   render() {
-    const { book, pageNr } = this.state;
-    let pageObj;
-    if (book) {
-      pageObj = book.pages.find((page) => page.pageNumber === pageNr);
-    }
+    const { book, pageNr, editMode, pages } = this.state;
 
+    let pageObj = pages.find((page) => page.pageNumber === pageNr);
+
+    console.log("pageObj", pageObj);
     return (
       <div>
-        {book.title}
-        {pageObj ? <p>{pageObj.text}</p> : null}
+        Hello from Write mode page
+        {/* editMode ? null : <p>{pageObj.text}</p> */}
         <p>Page: {pageNr}</p>
         <button onClick={this.handlePageIncrease}>Next page</button>
         <button onClick={this.handlePageDecrease}>Prev page</button>
@@ -42,3 +42,5 @@ export default class Read extends Component {
     );
   }
 }
+
+export default Write;

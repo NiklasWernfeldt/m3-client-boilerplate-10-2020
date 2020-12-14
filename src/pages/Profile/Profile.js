@@ -7,10 +7,10 @@ import userService from "../../lib/user-service";
 
 class Profile extends Component {
   state = {
-    firstname: this.props.user.firstname,
-    lastname: this.props.user.lastname,
-    email: this.props.user.email,
-    password: this.props.user.password,
+    firstname: "",
+    lastname: "",
+    email: "",
+    password: "",
     profileImage: "",
     totalCashEarned: "",
     totalViews: 0,
@@ -33,7 +33,18 @@ class Profile extends Component {
         },
         this.props.user._id
       )
-      .then((updatedUser) => console.log("user info updated"));
+      .then((updatedUser) => {
+        console.log("user info updated");
+        userService.getUserInfo(this.props.user._id).then((user) =>
+          this.setState({
+            firstname: user.firstname,
+            lastname: user.lastname,
+            email: user.email,
+            password: user.password,
+            profileImage: user.profileImage,
+          })
+        );
+      });
   };
 
   handleInput = (event) => {
@@ -66,15 +77,7 @@ class Profile extends Component {
   };
 
   render() {
-    const { user } = this.props;
     const {
-      firstname,
-      lastname,
-      email,
-      password,
-      profileImage,
-      totalCashEarned,
-      totalViews,
       toggleFirstnameReadOnly,
       toggleLastnameReadOnly,
       toggleEmailReadOnly,
@@ -157,6 +160,20 @@ class Profile extends Component {
         <Navbar />
       </div>
     );
+  }
+
+  componentDidMount() {
+    userService.getUserInfo(this.props.user._id).then((user) => {
+      // GET THIS COMPONENT TO DISPLAY CORRECT USER INFO
+      console.log(user);
+      this.setState({
+        firstname: user.firstname,
+        lastname: user.lastname,
+        email: user.email,
+        password: user.password,
+        profileImage: user.profileImage,
+      });
+    });
   }
 }
 

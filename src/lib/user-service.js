@@ -8,6 +8,14 @@ class UserService {
     });
   }
 
+  getUserInfo = (userId) => {
+    console.log("getUserInfo");
+    const pr = this.user
+      .get(`/user/${userId}`)
+      .then((response) => response.data);
+    return pr;
+  };
+
   updateUserInfo = (data, userId) => {
     const pr = this.user.put(`/user/${userId}`, data);
     return pr;

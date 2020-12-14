@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { withAuth } from "../../context/auth-context";
 import bookService from "../../lib/book-service";
 import Navbar from "../../components/Navbar";
+import { Link } from "react-router-dom";
 
 class Dashboad extends Component {
   state = {
@@ -30,25 +31,41 @@ class Dashboad extends Component {
         <p>My books</p>
         {myBooks.ownBooks
           ? myBooks.ownBooks.map((book, i) => {
-              return <h1 key={i}>{book.title}</h1>;
+              return (
+                <Link key={i} to={`/mybook/${book._id}`}>
+                  <h1>{book.title}</h1>
+                </Link>
+              );
             })
           : null}
         <p>Reading</p>
         {myBooks.nowReading
           ? myBooks.nowReading.map((book, i) => {
-              return <h2 key={i}>{book.title}</h2>;
+              return (
+                <Link key={i} to={`/mybook/${book._id}`}>
+                  <h2>{book.title}</h2>
+                </Link>
+              );
             })
           : null}
         <p>My favorite books</p>
         {myBooks.favoriteBooks
           ? myBooks.favoriteBooks.map((book, i) => {
-              return <h3 key={i}>{book.title}</h3>;
+              return (
+                <Link key={i} to={`/mybook/${book._id}`}>
+                  <h3>{book.title}</h3>
+                </Link>
+              );
             })
           : null}
         <p>Books to read</p>
         {myBooks.readList
           ? myBooks.readList.map((book, i) => {
-              return <h4 key={i}>{book.title}</h4>;
+              return (
+                <Link key={i} to={`/mybook/${book._id}`}>
+                  <h4>{book.title}</h4>
+                </Link>
+              );
             })
           : null}
         <Navbar />

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Navbar from "../../components/Navbar";
 import bookService from "../../lib/book-service";
 import { StyledLinkBtn } from "../../components/LinkBtn";
+import { Link } from "react-router-dom";
 
 export default class MyBook extends Component {
   state = {
@@ -21,7 +22,9 @@ export default class MyBook extends Component {
         Hello from MyBook
         {/* <img src={book.coverImage} /> */}
         <h1>{book.title}</h1>
-        <StyledLinkBtn>Edit/create-first-page</StyledLinkBtn>
+        <StyledLinkBtn>
+          <Link to={`/write/${book._id}`}>Edit/create-first-page</Link>
+        </StyledLinkBtn>
         <button>upload</button>
         <button>delete</button>
         <Navbar />

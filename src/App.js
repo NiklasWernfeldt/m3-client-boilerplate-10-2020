@@ -13,6 +13,7 @@ import MyBook from "./pages/MyBook/MyBook";
 import BookDetails from "./pages/BookDetails/BookDetails";
 import Author from "./pages/Author/Author";
 import Read from "./pages/Read/Read";
+import Write from "./pages/Write/Write";
 
 import AnonRoute from "./components/AnonRoute";
 import PrivateRoute from "./components/PrivateRoute";
@@ -35,6 +36,7 @@ class App extends Component {
           <PrivateRoute exact path="/bookdetails/:id" component={BookDetails} />
           <PrivateRoute exact path="/author/:id" component={Author} />
           <PrivateRoute exact path="/read/:id" component={Read} />
+          <PrivateRoute exact path="/write/:id" component={Write} />
         </Switch>
       </div>
     );

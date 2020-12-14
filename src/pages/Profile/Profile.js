@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { withAuth } from "../../context/auth-context";
 import Navbar from "../../components/Navbar";
-
-// update the User in handleSubmit, findById.
+import userService from "../../lib/user-service";
 
 // do the logic for totalCashEarned
 
@@ -23,6 +22,18 @@ class Profile extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
+    userService
+      .updateUserInfo(
+        {
+          firstname: this.state.firstname,
+          lastname: this.state.lastname,
+          email: this.state.email,
+          password: this.state.password,
+          profileImage: this.state.profileImage,
+        },
+        this.props.user._id
+      )
+      .then((updatedUser) => console.log("user info updated"));
   };
 
   handleInput = (event) => {
@@ -56,8 +67,6 @@ class Profile extends Component {
 
   render() {
     const { user } = this.props;
-    console.log(user);
-    console.log(this.state);
     const {
       firstname,
       lastname,

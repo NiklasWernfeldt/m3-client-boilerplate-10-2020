@@ -3,7 +3,9 @@ import axios from "axios";
 class AuthorService {
   constructor() {
     this.author = axios.create({
-      baseURL: "http://localhost:5000/api/author",
+      // baseURL: "http://localhost:5000", before heroku deployment
+      baseURL: process.env.REACT_APP_API_URL, // setup deployment
+
       withCredentials: true,
     });
   }

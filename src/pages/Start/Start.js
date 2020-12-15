@@ -13,13 +13,10 @@ class Start extends Component {
 
   componentDidMount() {
     bookService.getAllBooks().then((books) => {
-      const actionBooks = books[0].books.filter(
-        (book) => book.genre === "action"
-      );
+      console.log("heyBooks", books);
+      const actionBooks = books.filter((book) => book.genre === "action");
 
-      const fantasyBooks = books[0].books.filter(
-        (book) => book.genre === "fantasy"
-      );
+      const fantasyBooks = books.filter((book) => book.genre === "fantasy");
 
       this.setState({ actionBooks, fantasyBooks });
     });

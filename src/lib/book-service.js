@@ -3,13 +3,15 @@ import axios from "axios";
 class BookService {
   constructor() {
     this.book = axios.create({
-      baseURL: "http://localhost:5000/api",
+      // baseURL: "http://localhost:5000/api", before heroku deployment
+      baseURL: process.env.REACT_APP_API_URL + "/api", // setup deployment
+
       withCredentials: true,
     });
   }
 
   getAllBooks = () => {
-    const pr = this.book.get("/startpage/").then((response) => response.data);
+    const pr = this.book.get("/startpage").then((response) => response.data);
 
     return pr;
   };

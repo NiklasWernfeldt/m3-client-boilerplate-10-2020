@@ -3,7 +3,8 @@ import axios from "axios";
 class AuthService {
   constructor() {
     this.auth = axios.create({
-      baseURL: "http://localhost:5000",
+      // baseURL: "http://localhost:5000", before heroku deployment
+      baseURL: process.env.REACT_APP_API_URL, // setup deployment
       withCredentials: true,
     });
   }

@@ -3,8 +3,8 @@ import axios from "axios";
 class UserService {
   constructor() {
     this.user = axios.create({
-      // baseURL: "http://localhost:5000", before heroku deployment
-      baseURL: process.env.REACT_APP_API_URL, // setup deployment
+      // baseURL: "http://localhost:5000/api", before heroku deployment
+      baseURL: process.env.REACT_APP_API_URL + "/api", // setup deployment
 
       withCredentials: true,
     });

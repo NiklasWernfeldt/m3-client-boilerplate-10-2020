@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { withAuth } from "../../context/auth-context";
 import Navbar from "../../components/Navbar";
 import userService from "../../lib/user-service";
+import authService from "../../lib/auth-service";
 
 // do the logic for totalCashEarned
 
@@ -74,6 +75,11 @@ class Profile extends Component {
     this.setState({
       togglePasswordReadOnly: !this.state.togglePasswordReadOnly,
     });
+  };
+
+  handleLogout = () => {
+    this.props.logout();
+    // this.props.history.push("/");
   };
 
   render() {
@@ -157,6 +163,7 @@ class Profile extends Component {
           <p onClick={this.handleEditFieldPassword}>EditBtn</p>
           <input type="submit" value="Save" />
         </form>
+        <button onClick={this.handleLogout}>Logout</button>
         <Navbar />
       </div>
     );

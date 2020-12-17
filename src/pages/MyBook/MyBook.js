@@ -11,20 +11,52 @@ export default class MyBook extends Component {
 
   componentDidMount() {
     const { id } = this.props.match.params;
-    bookService.getOneBook(id).then((book) => this.setState(book));
+    console.log(id);
+    bookService.getOneBook(id).then((book) => {
+      this.setState({ book });
+    });
   }
+
+  editBook = () => {
+    // redirect to the last written page
+  };
+
+  /* createPage = () => {
+    const { id } = this.props.match.params;
+
+    bookService
+      .createThePage(id, {
+        text: "write here",
+        pageImage: "",
+      })
+      .then(() => {
+        this.props.history.push(`/write/${id}`);
+        console.log("created a new page");
+      });
+  }; */
 
   render() {
     const { book } = this.state;
+
     console.log("book", book);
     return (
       <div>
-        Hello from MyBook
         {/* <img src={book.coverImage} /> */}
-        <h1>{book.title}</h1>
+        <h1>Book title: {book.title}</h1>
         <StyledLinkBtn>
           <Link to={`/write/${book._id}`}>Edit/create-first-page</Link>
         </StyledLinkBtn>
+        {/*book.pages && book.pages[0] ? (
+          <StyledLinkBtn>
+            {" "}
+            <button onClick={this.editBook}>Edit</button>{" "}
+          </StyledLinkBtn>
+        ) : (
+          <StyledLinkBtn>
+            {" "}
+            <button onClick={this.createPage}>Create</button>
+          </StyledLinkBtn>
+        )*/}
         <button>upload</button>
         <button>delete</button>
         <Navbar />

@@ -27,44 +27,67 @@ class Dashboad extends Component {
     // NOTE: har inget med denna comp att göra, insert docs
     return (
       <div>
-        Hola from Dashboard
-        <p>My books</p>
+        <h1>My books</h1>
         {myBooks.ownBooks
           ? myBooks.ownBooks.map((book, i) => {
               return (
-                <Link key={i} to={`/mybook/${book._id}`}>
-                  <h1>{book.title}</h1>
-                </Link>
+                <div>
+                  <Link
+                    className="dashboard-link"
+                    key={i}
+                    to={`/mybook/${book._id}`}
+                  >
+                    <p>{book.title}</p>
+                  </Link>
+                </div>
               );
             })
           : null}
-        <p>Reading</p>
+        <h1>Reading</h1>
         {myBooks.nowReading
           ? myBooks.nowReading.map((book, i) => {
               return (
-                <Link key={i} to={`/mybook/${book._id}`}>
-                  <h2>{book.title}</h2>
-                </Link>
+                <div>
+                  <Link
+                    className="dashboard-link"
+                    key={i}
+                    to={`/mybook/${book._id}`}
+                  >
+                    <h2>{book.title}</h2>
+                  </Link>
+                </div>
               );
             })
           : null}
-        <p>My favorite books</p>
+        <h1>My favorite books</h1>
         {myBooks.favoriteBooks
           ? myBooks.favoriteBooks.map((book, i) => {
               return (
-                <Link key={i} to={`/mybook/${book._id}`}>
-                  <h3>{book.title}</h3>
-                </Link>
+                <div>
+                  <Link
+                    className="dashboard-link"
+                    key={i}
+                    to={`/mybook/${book._id}`}
+                  >
+                    <h3>{book.title}</h3>
+                  </Link>
+                </div>
               );
             })
           : null}
-        <p>Books to read</p>
+        <h1>Books to read</h1>
         {myBooks.readList
           ? myBooks.readList.map((book, i) => {
               return (
-                <Link key={i} to={`/mybook/${book._id}`}>
-                  <h4>{book.title}</h4>
-                </Link>
+                <div>
+                  <Link
+                    className="dashboard-link"
+                    key={i}
+                    to={`/mybook/${book._id}`}
+                  >
+                    <h4>{book.title}</h4>
+                  </Link>
+                </div>
               );
             })
           : null}

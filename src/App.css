@@ -8,3 +8,26 @@ body {
 img {
   display: block;
 }
+
+.navbar {
+  display: flex;
+  justify-content: space-around;
+}
+
+.navbar-link {
+  text-decoration: none;
+  color: black;
+}
+
+.navbar-link:hover {
+  color: grey;
+}
+
+.dashboard-link {
+  text-decoration: none;
+  color: black;
+}
+
+.dashboard-link:hover {
+  color: grey;
+}

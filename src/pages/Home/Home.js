@@ -10,14 +10,11 @@ function Home() {
   return (
     <div>
       <Hero>
-        <img src={bookstoreImg} alt="" />
         <p>Write and publish books online for free</p>
         <Link to="/login">
           <StyledLinkBtn>Start</StyledLinkBtn>
         </Link>
       </Hero>
-      <Section bgColor="blue" />
-      <Section bgColor="green" />
     </div>
   );
 }

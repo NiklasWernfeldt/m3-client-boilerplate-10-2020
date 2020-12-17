@@ -26,7 +26,6 @@ class Start extends Component {
     const { actionBooks, fantasyBooks } = this.state;
     return (
       <div>
-        <Navbar />
         <h2>Welcome {this.props.user && this.props.user.username}</h2>
         <div className="action-books">
           {actionBooks.map((book, i) => {
@@ -46,6 +45,7 @@ class Start extends Component {
             );
           })}
         </div>
+        <Navbar />
       </div>
     );
   }

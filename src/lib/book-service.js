@@ -43,7 +43,17 @@ class BookService {
   };
 
   getMyBooks = () => {
-    const pr = this.book.get("/dashboard/").then((response) => response.data);
+    const pr = this.book.get("/dashboard").then((response) => response.data);
+    return pr;
+  };
+
+  updatedLastViewedPage = (page) => {
+    const pr = this.book.put("/lastpage", { page });
+    return pr;
+  };
+
+  createThePage = (bookId, data) => {
+    const pr = this.book.post(`/createPage/${bookId}?pageNr=1`, data);
     return pr;
   };
 }

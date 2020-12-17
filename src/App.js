@@ -6,7 +6,7 @@ import Home from "./pages/Home/Home";
 import Signup from "./pages/Signup/Signup";
 import Login from "./pages/Login/Login";
 import Start from "./pages/Start/Start";
-import Dashboard from "./pages/Dashboard/Dashboad";
+import Dashboard from "./pages/Dashboard/Dashboard";
 import Profile from "./pages/Profile/Profile";
 import CreateBook from "./pages/CreateBook/CreateBook";
 import MyBook from "./pages/MyBook/MyBook";

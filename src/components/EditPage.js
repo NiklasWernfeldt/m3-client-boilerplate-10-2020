@@ -13,16 +13,21 @@ class EditPage extends React.Component {
   };
 
   componentDidMount() {
-    this.setState({ text: this.props.page.text });
+    if (this.props.page) {
+      this.setState({ text: this.props.page.text });
+    }
+    this.setState({ text: "" });
   }
 
   handleSubmit = (event) => {
     event.preventDefault();
-    const { text } = this.state;
+    const { text, id } = this.state;
 
-    authorService.savePage(this.props.page._id, { text }).then(() => {
-      this.props.handleSavePage();
-    });
+    if (this.props.page) {
+      authorService.savePage(this.props.page._id, { text }).then(() => {
+        this.props.handleSavePage();
+      });
+    }
   };
 
   render() {

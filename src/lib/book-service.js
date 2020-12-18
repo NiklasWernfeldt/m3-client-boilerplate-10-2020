@@ -47,13 +47,27 @@ class BookService {
     return pr;
   };
 
+  // not in use
   updatedLastViewedPage = (page) => {
     const pr = this.book.put("/lastpage", { page });
     return pr;
   };
 
   createThePage = (bookId, data) => {
-    const pr = this.book.post(`/createPage/${bookId}?pageNr=1`, data);
+    const pr = this.book.post(`/createPage/${bookId}`, data);
+    return pr;
+  };
+
+  uploadNewBook = (bookId, data) => {
+    console.log("uploadNewBook");
+    const pr = this.book.post(`/book/upload/${bookId}`, data);
+    return pr;
+  };
+
+  getAllPublicBooks = () => {
+    const pr = this.book
+      .get("/books/publicbooks")
+      .then((response) => response.data);
     return pr;
   };
 }

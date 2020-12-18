@@ -7,28 +7,24 @@ import { Link } from "react-router-dom";
 
 class Start extends Component {
   state = {
-    actionBooks: [],
-    fantasyBooks: [],
+    books: [],
   };
 
   componentDidMount() {
-    bookService.getAllBooks().then((books) => {
-      console.log("heyBooks", books);
-      const actionBooks = books.filter((book) => book.genre === "action");
+    bookService.getAllPublicBooks().then((publicList) => {
+      console.log("publicList", publicList);
 
-      const fantasyBooks = books.filter((book) => book.genre === "fantasy");
-
-      this.setState({ actionBooks, fantasyBooks });
+      this.setState({ books: publicList[0].books });
     });
   }
 
   render() {
-    const { actionBooks, fantasyBooks } = this.state;
+    const { books } = this.state;
     return (
       <div>
         <h2>Welcome {this.props.user && this.props.user.username}</h2>
         <div className="action-books">
-          {actionBooks.map((book, i) => {
+          {books.map((book, i) => {
             return (
               <Link key={i} to={`/bookdetails/${book._id}`}>
                 <h1>{book.title}</h1>;
@@ -36,15 +32,7 @@ class Start extends Component {
             );
           })}
         </div>
-        <div className="fantasy-books">
-          {fantasyBooks.map((book, i) => {
-            return (
-              <Link key={i} to={`/bookdetails/${book._id}`}>
-                <h1>{book.title}</h1>;
-              </Link>
-            );
-          })}
-        </div>
+
         <Navbar />
       </div>
     );

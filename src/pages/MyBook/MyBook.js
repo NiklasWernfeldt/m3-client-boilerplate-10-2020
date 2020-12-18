@@ -17,6 +17,14 @@ export default class MyBook extends Component {
     });
   }
 
+  handleUploadBook = () => {
+    const { book } = this.state;
+    const { id } = this.props.match.params;
+    bookService
+      .uploadNewBook(id, book)
+      .then(() => console.log("uploaded new book"));
+  };
+
   editBook = () => {
     // redirect to the last written page
   };
@@ -57,7 +65,7 @@ export default class MyBook extends Component {
             <button onClick={this.createPage}>Create</button>
           </StyledLinkBtn>
         )*/}
-        <button>upload</button>
+        <button onClick={this.handleUploadBook}>upload</button>
         <button>delete</button>
         <Navbar />
       </div>
